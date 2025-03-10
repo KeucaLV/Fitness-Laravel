@@ -9,6 +9,12 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
+    // Specify the custom table name
+    protected $table = 'lietotajs';
+
+    // You can also specify the primary key if it's not 'id'
+    protected $primaryKey = 'id'; // This is optional since 'id' is the default
     use HasFactory, Notifiable;
 
     /**

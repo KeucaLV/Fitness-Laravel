@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class Lietotajs extends Authenticatable
 {
-    use HasFactory;
+    use Notifiable, HasApiTokens;
 
-    protected $table = 'lietotajs'; // Set the table name
+    protected $table = 'lietotajs'; // Specify your custom table
 
     protected $fillable = [
         'firstname',
@@ -17,6 +18,17 @@ class Lietotajs extends Authenticatable
         'email',
         'username',
         'password',
+        'img',
+        'goal_weight',
+        'weight_now',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 }
-
